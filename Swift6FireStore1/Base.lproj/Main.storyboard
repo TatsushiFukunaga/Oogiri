@@ -165,6 +165,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Vm-s9-xDM"/>
                     <connections>
+                        <outlet property="odaiLabel" destination="T5v-eg-pzZ" id="Rpf-eY-FK5"/>
+                        <outlet property="tableView" destination="Mft-5B-R1Y" id="Lku-SI-ean"/>
                         <segue destination="dM0-UL-WMX" kind="show" id="lxS-1o-zZR"/>
                     </connections>
                 </viewController>
