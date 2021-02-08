@@ -64,7 +64,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-ih-HMs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-ih-HMs">
                                 <rect key="frame" x="30" y="139" width="355" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,6 +92,9 @@
                                 <rect key="frame" x="240" y="559" width="126" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="send"/>
+                                <connections>
+                                    <action selector="send:" destination="9dR-Qa-A8Z" eventType="touchUpInside" id="bNx-Jx-cPF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8p-at-lzB">
                                 <rect key="frame" x="43" y="561" width="128" height="124"/>
@@ -104,6 +107,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Uir-gn-Bhm"/>
                     <connections>
+                        <outlet property="odaiLabel" destination="yqz-ih-HMs" id="3tG-xc-Qdp"/>
+                        <outlet property="textView" destination="d3d-GL-bNQ" id="hZH-8Z-kuH"/>
                         <segue destination="mPy-Og-Bke" kind="show" id="jEK-2m-hfG"/>
                     </connections>
                 </viewController>

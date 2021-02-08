@@ -6,14 +6,63 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import EMAlertController
 
 class ViewController: UIViewController {
 
+    let db1 = Firestore.firestore().collection("Odai").document("RRXHpoUbWCbWKPUFrNLN")
+    let db2 = Firestore.firestore()
+    
+    var userName = String()
+    
+    @IBOutlet weak var odaiLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if UserDefaults.standard.object(forKey: "userName") != nil {
+            userName = UserDefaults.standard.object(forKey: "userName") as! String
+        }
+        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        
+        // load
+        loadQuestionData()
+        
+    }
+    
+    func loadQuestionData(){
+        db1.getDocument { (snapshot, error) in
+            if error != nil {
+                return
+            }
+            
+            let data = snapshot?.data()
+            self.odaiLabel.text = data!["odaiText"] as! String
+        }
+    }
+    
+    
+    @IBAction func send(_ sender: Any) {
+        db2.collection("Answers").document().setData(["answer": textView.text as Any, "userName": userName as Any, "postDate": Date().timeIntervalSince1970])
+        textView.text = ""
+        // alert
+        let alert = EMAlertController(icon: UIImage(named: "check"), title: "投稿完了", message: "みんなの回答も見てみよう！")
+        let doneAlert = EMAlertAction(title: "OK", style: .normal)
+        alert.addAction(doneAlert)
+        present(alert, animated: true, completion: nil)
+        textView.text = ""
+    }
+    
 
 }
 
