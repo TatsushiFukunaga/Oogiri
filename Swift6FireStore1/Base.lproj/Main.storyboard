@@ -100,6 +100,9 @@
                                 <rect key="frame" x="43" y="561" width="128" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="box"/>
+                                <connections>
+                                    <action selector="checkAnswer:" destination="9dR-Qa-A8Z" eventType="touchUpInside" id="jMT-BI-8Jy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5w-Vg-DMc"/>
@@ -116,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="1859" y="86"/>
         </scene>
-        <!--View Controller-->
+        <!--Check View Controller-->
         <scene sceneID="SnU-ZZ-SZc">
             <objects>
-                <viewController id="mPy-Og-Bke" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="checkVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mPy-Og-Bke" customClass="CheckViewController" customModule="Swift6FireStore1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kee-mz-W4E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
