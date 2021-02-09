@@ -63,7 +63,7 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //画面遷移
         let commentVC = self.storyboard?.instantiateViewController(identifier: "commentVC") as! CommentViewController
         commentVC.idString = dataSets[indexPath.row].docID
-        commentVC.answerString = "\(dataSets[indexPath.row].answers)くんの回答\n\(dataSets[indexPath.row].answers)"
+        commentVC.kaitouString = "\(dataSets[indexPath.row].answers)くんの回答\n\(dataSets[indexPath.row].answers)"
         self.navigationController?.pushViewController(commentVC, animated: true)
     }
     

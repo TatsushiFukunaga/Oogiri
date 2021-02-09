@@ -247,12 +247,21 @@
                                 <rect key="frame" x="325" y="814" width="75" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="send"/>
+                                <connections>
+                                    <action selector="sendAction:" destination="dM0-UL-WMX" eventType="touchUpInside" id="2GW-69-cGq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8zd-NC-GBC"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="mk8-lK-FKt"/>
+                    <connections>
+                        <outlet property="kaitouLabel" destination="GrZ-Ww-ELU" id="ABh-8x-aYm"/>
+                        <outlet property="sendButton" destination="ptU-tv-aXO" id="clj-Sb-sRG"/>
+                        <outlet property="tableView" destination="5fF-oa-Hdx" id="o5t-1c-YNe"/>
+                        <outlet property="textField" destination="u90-1N-gqK" id="W9a-o6-1xZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aC1-L7-OoU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
