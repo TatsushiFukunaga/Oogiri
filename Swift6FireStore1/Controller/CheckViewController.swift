@@ -47,8 +47,34 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func loadData() {
         // get documents of Answers
         
-        
         // into DataSets as AnswersModel
+        db.collection("Answers").order(by: "postDate").addSnapshotListener { (snapshot, error) in
+            
+            self.dataSets = []
+            
+            if error != nil {
+                return
+            }
+            
+            if let snapshotdoc = snapshot?.documents {
+                
+                for doc in snapshotdoc {
+                    
+                    let data = doc.data()
+                    if let answer = data["answer"] as? String, let userName = data["userName"] as? String {
+                        
+                        let answerModel = AnswersModel(answers: answer, userName: userName, docID: doc.documentID)
+                        self.dataSets.append(answerModel)
+                        
+                    }
+                    
+                }
+                
+                self.tableView.reloadData()
+                
+            }
+            
+        }
     }
     
 
