@@ -40,7 +40,26 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func loadData() {
-        
+        db.collection("Answers").document(idString).collection("comment").order(by: "postDate").addSnapshotListener { (snapshot, error) in
+            
+            self.dataSets = []
+            
+            if error != nil {
+                return
+            }
+            if let snapshotDoc = snapshot?.documents {
+                
+                for doc in snapshotDoc {
+                    let data = doc.data()
+                    if let userName = data["userName"] as? String, let comment = data["comment"] as? String, let postDate = data["postDate"] as? Double {
+                        
+                        let commentModel = CommentModel(userName: userName, comment: comment, postDat: postDate)
+                        self.dataSets.append(commentModel)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
