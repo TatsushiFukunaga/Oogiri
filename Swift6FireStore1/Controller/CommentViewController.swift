@@ -63,7 +63,14 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        tableView.rowHeight = 200
+        
+        let commentLabel = cell.contentView.viewWithTag(1) as! UILabel
+        commentLabel.numberOfLines = 0
+        commentLabel.text = "\(self.dataSets[indexPath.row].userName)くん\n\(self.dataSets[indexPath.row].comment)"
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
