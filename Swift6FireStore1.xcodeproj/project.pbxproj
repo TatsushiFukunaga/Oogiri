@@ -16,6 +16,7 @@
 		4338573125CF9FCC00EBFA31 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338573025CF9FCC00EBFA31 /* LoginViewController.swift */; };
 		43AB85A525D10B5E007A8D6B /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB85A425D10B5E007A8D6B /* CheckViewController.swift */; };
 		43AB85AC25D10E86007A8D6B /* AnswersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB85AB25D10E86007A8D6B /* AnswersModel.swift */; };
+		43AB85B025D23414007A8D6B /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB85AF25D23414007A8D6B /* CommentViewController.swift */; };
 		43F3200E25CFAF6D00AA1671 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F3200D25CFAF6D00AA1671 /* GoogleService-Info.plist */; };
 		C5E7D64C9B63EBBE13A5C060 /* Pods_Swift6FireStore1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5A8DF91F22A5C174B4FD32 /* Pods_Swift6FireStore1.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		4338573025CF9FCC00EBFA31 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		43AB85A425D10B5E007A8D6B /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		43AB85AB25D10E86007A8D6B /* AnswersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersModel.swift; sourceTree = "<group>"; };
+		43AB85AF25D23414007A8D6B /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		43F3200D25CFAF6D00AA1671 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F18EDB807C38789EDF0A527 /* Pods-Swift6FireStore1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift6FireStore1.release.xcconfig"; path = "Target Support Files/Pods-Swift6FireStore1/Pods-Swift6FireStore1.release.xcconfig"; sourceTree = "<group>"; };
 		EE5A8DF91F22A5C174B4FD32 /* Pods_Swift6FireStore1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift6FireStore1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 				43364AF625CF99D200D282C2 /* ViewController.swift */,
 				4338573025CF9FCC00EBFA31 /* LoginViewController.swift */,
 				43AB85A425D10B5E007A8D6B /* CheckViewController.swift */,
+				43AB85AF25D23414007A8D6B /* CommentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43AB85B025D23414007A8D6B /* CommentViewController.swift in Sources */,
 				4338573125CF9FCC00EBFA31 /* LoginViewController.swift in Sources */,
 				43AB85AC25D10E86007A8D6B /* AnswersModel.swift in Sources */,
 				43364AF725CF99D200D282C2 /* ViewController.swift in Sources */,

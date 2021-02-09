@@ -59,6 +59,14 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //画面遷移
+        let commentVC = self.storyboard?.instantiateViewController(identifier: "commentVC") as! CommentViewController
+        commentVC.idString = dataSets[indexPath.row].docID
+        commentVC.answerString = "\(dataSets[indexPath.row].answers)くんの回答\n\(dataSets[indexPath.row].answers)"
+        self.navigationController?.pushViewController(commentVC, animated: true)
+    }
+    
     func loadData() {
         // get documents of Answers
         
