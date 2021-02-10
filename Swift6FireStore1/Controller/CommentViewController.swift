@@ -16,6 +16,7 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     var userName = String()
     let db = Firestore.firestore()
     var dataSets: [CommentModel] = []
+    let screenSize = UIScreen.main.bounds.size
     
     @IBOutlet weak var kaitouLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -31,6 +32,34 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillHide(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification:NSNotification){
+                  
+        let keyboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
+                  
+            textField.frame.origin.y = screenSize.height - keyboardHeight - textField.frame.height
+            sendButton.frame.origin.y = screenSize.height - keyboardHeight - sendButton.frame.height
+     }
+
+     @objc func keyboardWillHide(_ notification:NSNotification){
+
+            textField.frame.origin.y = screenSize.height - textField.frame.height
+            sendButton.frame.origin.y = screenSize.height - sendButton.frame.height
+           
+            guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else{return}
+        
+                  UIView.animate(withDuration: duration) {
+                      
+                      let transform = CGAffineTransform(translationX: 0, y: 0)
+                      self.view.transform = transform
+                      
+                  }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
