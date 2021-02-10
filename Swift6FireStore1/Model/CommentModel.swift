@@ -10,5 +10,5 @@ import Foundation
 struct CommentModel {
     let userName: String
     let comment: String
-    let postDat: Double
+    let postDate: Double
 }

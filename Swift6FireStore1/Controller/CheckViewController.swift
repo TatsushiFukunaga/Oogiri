@@ -12,14 +12,12 @@ import FirebaseFirestore
 class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var odaiString = String()
-    
-    @IBOutlet weak var odaiLabel: UILabel!
-    
-    @IBOutlet weak var tableView: UITableView!
-    
     let db = Firestore.firestore()
     var dataSets : [AnswersModel] = []
     
+    @IBOutlet weak var odaiLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,7 +90,7 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
                     
                 }
-                
+                self.dataSets.reverse()
                 self.tableView.reloadData()
                 
             }

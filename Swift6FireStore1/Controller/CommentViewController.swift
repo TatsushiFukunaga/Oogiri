@@ -85,10 +85,11 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let data = doc.data()
                     if let userName = data["userName"] as? String, let comment = data["comment"] as? String, let postDate = data["postDate"] as? Double {
                         
-                        let commentModel = CommentModel(userName: userName, comment: comment, postDat: postDate)
+                        let commentModel = CommentModel(userName: userName, comment: comment, postDate: postDate)
                         self.dataSets.append(commentModel)
                     }
                 }
+                self.dataSets.reverse()
                 self.tableView.reloadData()
             }
         }
@@ -98,7 +99,6 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         tableView.rowHeight = 200
-        
         let commentLabel = cell.contentView.viewWithTag(1) as! UILabel
         commentLabel.numberOfLines = 0
         commentLabel.text = "\(self.dataSets[indexPath.row].userName)くん\n\(self.dataSets[indexPath.row].comment)"
@@ -124,7 +124,10 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
         }
         
-        db.collection("Answers").document(idString).collection("comment").document().setData(["userName" : userName as Any, "comment" : textField.text as Any, "postData" : Date().timeIntervalSince1970])
+        db.collection("Answers").document(idString).collection("comment").document().setData(["userName" : userName as Any, "comment" : textField.text as Any, "postDate" : Date().timeIntervalSince1970])
+        
+        textField.text = ""
+        textField.resignFirstResponder()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
