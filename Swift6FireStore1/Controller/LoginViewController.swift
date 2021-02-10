@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(self.textField.text, forKey: "userName")
             
-            let viewVC = self.storyboard?.instantiateViewController(identifier: "viewVC") as! ViewController
+            let viewVC = self.storyboard?.instantiateViewController(identifier: "ViewVC") as! ViewController
             self.navigationController?.pushViewController(viewVC, animated: true)
             
         }

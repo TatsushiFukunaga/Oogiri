@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         
         let firebaseAuth = Auth.auth()
         do {
-            try! firebaseAuth.signOut()
+            try firebaseAuth.signOut()
         } catch let error as NSError {
             print(error)
         }

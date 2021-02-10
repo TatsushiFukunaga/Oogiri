@@ -66,7 +66,7 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
         loadData()
     }
@@ -120,7 +120,15 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func sendAction(_ sender: Any) {
         
-        db.collection("Answers").document(idString).collection("comment").document().setData(["comment" : userName as Any, "userName" : textField.text as Any, "postData" : Date().timeIntervalSince1970])
+        if textField.text?.isEmpty == true {
+            return
+        }
+        
+        db.collection("Answers").document(idString).collection("comment").document().setData(["userName" : userName as Any, "comment" : textField.text as Any, "postData" : Date().timeIntervalSince1970])
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textField.resignFirstResponder()
     }
     
 
