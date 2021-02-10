@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 import EMAlertController
 
@@ -70,6 +71,17 @@ class ViewController: UIViewController {
         checkVC.odaiString = odaiLabel.text!
         self.navigationController?.pushViewController(checkVC, animated: true)
         
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try! firebaseAuth.signOut()
+        } catch let error as NSError {
+            print(error)
+        }
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
