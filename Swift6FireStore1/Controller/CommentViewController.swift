@@ -26,12 +26,15 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if UserDefaults.standard.object(forKey: "userName") != nil {
-            userName = UserDefaults.standard.object(forKey: "userName") as! String
-        }
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        kaitouLabel.text = kaitouString
+        
+        if UserDefaults.standard.object(forKey: "userName") != nil {
+            userName = UserDefaults.standard.object(forKey: "userName") as! String
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(CommentViewController.keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
                 
