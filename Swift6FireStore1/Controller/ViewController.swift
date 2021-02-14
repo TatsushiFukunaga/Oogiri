@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func send(_ sender: Any) {
-        db2.collection("Answers").document().setData(["answer": textView.text as Any, "userName": userName as Any, "postDate": Date().timeIntervalSince1970])
+        db2.collection("Answers").document().setData(["answer": textView.text as Any, "userName": userName as Any, "postDate": Date().timeIntervalSince1970, "like": 0, "likeFlagDic": [idString: false]])
         textView.text = ""
         // alert
         let alert = EMAlertController(icon: UIImage(named: "check"), title: "投稿完了", message: "みんなの回答も見てみよう！")
@@ -88,6 +88,8 @@ class ViewController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            UserDefaults.standard.removeObject(forKey: "userName")
+            UserDefaults.standard.removeObject(forKey: "documentID")
         } catch let error as NSError {
             print(error)
         }
