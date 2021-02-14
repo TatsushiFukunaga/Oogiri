@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let db2 = Firestore.firestore()
     
     var userName = String()
+    var idString = String()
     
     @IBOutlet weak var odaiLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
@@ -33,6 +34,15 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
+        
+        if UserDefaults.standard.object(forKey: "documentID") != nil {
+            idString = UserDefaults.standard.object(forKey: "documentID") as! String
+        } else {
+            idString = db2.collection("Answers").document().path
+            print(idString)
+            idString = String(idString.dropFirst(8))
+            UserDefaults.standard.setValue(idString, forKey: "documentID")
+        }
         
         self.navigationController?.isNavigationBarHidden = true
         
