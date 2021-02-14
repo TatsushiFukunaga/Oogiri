@@ -14,6 +14,7 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var odaiString = String()
     let db = Firestore.firestore()
     var dataSets : [AnswersModel] = []
+    var idString = String()
     
     @IBOutlet weak var odaiLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +28,12 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        if UserDefaults.standard.object(forKey: "documentID") != nil {
+            idString = UserDefaults.standard.object(forKey: "documentID") as! String
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,12 +51,20 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
         tableView.rowHeight = 200
-        let answerLabel = cell.contentView.viewWithTag(1) as! UILabel
-        answerLabel.numberOfLines = 0
-        answerLabel.text = "\(self.dataSets[indexPath.row].userName)くんの回答\n\(self.dataSets[indexPath.row].answers)"
+        
+        //let answerLabel = cell.contentView.viewWithTag(1) as! UILabel
+        cell.answerLabel.numberOfLines = 0
+        cell.answerLabel.text = "\(self.dataSets[indexPath.row].userName)くんの回答\n\(self.dataSets[indexPath.row].answers)"
+        cell.likeButton.tag = indexPath.row
+        cell.countLabel.text = String(self.dataSets[indexPath.row].likeCount) + "いいね"
+        cell.likeButton.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func like (_ sender:UIButton) {
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
