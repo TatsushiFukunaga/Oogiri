@@ -74,6 +74,24 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @objc func like (_ sender:UIButton) {
         
+        var count = Int()
+        let flag = self.dataSets[sender.tag].likeFlagDic[idString]
+        
+        if flag == nil {
+            count = self.dataSets[sender.tag].likeCount + 1
+            db.collection("Answers").document(dataSets[sender.tag].docID).setData(["likeFlagDic": [idString:true]], merge: true)
+        } else {
+            if flag as! Bool == true {
+                count = self.dataSets[sender.tag].likeCount - 1
+                db.collection("Answers").document(dataSets[sender.tag].docID).setData(["likeFlagDic": [idString:true]], merge: true)
+            } else {
+                count = self.dataSets[sender.tag].likeCount + 1
+                db.collection("Answers").document(dataSets[sender.tag].docID).setData(["likeFlagDic": [idString:true]], merge: true)
+            }
+        }
+        //countの情報を送信
+        db.collection("Answers").document(dataSets[sender.tag].docID).updateData(["like": count], completion: nil)
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
