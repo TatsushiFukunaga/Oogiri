@@ -60,6 +60,15 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.likeButton.tag = indexPath.row
         cell.countLabel.text = String(self.dataSets[indexPath.row].likeCount) + "いいね"
         cell.likeButton.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
+        
+        if (self.dataSets[indexPath.row].likeFlagDic[idString] != nil) == true {
+            let flag = self.dataSets[indexPath.row].likeFlagDic[idString]
+            if flag! as! Bool == true {
+                cell.likeButton.setImage(UIImage(named: "like"), for: .normal)
+            } else {
+                cell.likeButton.setImage(UIImage(named: "nolike"), for: .normal)
+            }
+        }
         return cell
     }
     
