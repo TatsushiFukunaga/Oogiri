@@ -106,11 +106,12 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 for doc in snapshotdoc {
                     
                     let data = doc.data()
-                    if let answer = data["answer"] as? String, let userName = data["userName"] as? String {
+                    if let answer = data["answer"] as? String, let userName = data["userName"] as? String, let likeCount = data["like"] as? Int, let likeFlagDic = data["likeFlagDic"] as? Dictionary<String,Bool> {
                         
-                        let answerModel = AnswersModel(answers: answer, userName: userName, docID: doc.documentID)
-                        self.dataSets.append(answerModel)
-                        
+                        if likeFlagDic["\(doc.documentID)"] != nil {
+                            let answerModel = AnswersModel(answers: answer, userName: userName, docID: doc.documentID, likeCount: likeCount, likeFlagDic: likeFlagDic)
+                            self.dataSets.append(answerModel)
+                        }
                     }
                     
                 }
